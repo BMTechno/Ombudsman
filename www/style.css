@@ -1,0 +1,188 @@
+
+.but
+{
+    padding: 10px 10%;
+    background-color: #035ea8;
+    color: white;
+    width: 45%;
+}
+    label
+    {
+        display: block;
+    }
+/* CSS responsive square grid */
+.grid-photo:after 
+    {
+        content:'';
+        display:block;
+        clear:both;
+    }
+.grid-photo li 
+    {
+        position: relative; 
+        display:block; 
+        float:left; 
+        width: 10%; 
+        padding-bottom: 10%;
+    }
+.grid-photo .grid-photo-box 
+    {
+        position: absolute;
+        left: 3px;
+        right: 3px;
+        top: 3px;
+        bottom: 3px; 
+        /*background-color: inherit;/*/
+    }
+.grid-photo img 
+    {
+        
+       /* background-color: gray; */ 
+    }
+@media only screen and (max-width : 1024px) 
+{
+.grid-photo li 
+    {
+        width: 12.5%; 
+        padding-bottom: 12.5%;
+    }
+}
+@media only screen and (max-width : 768px) 
+{
+.grid-photo li 
+    {
+        width: 16.6%; 
+        padding-bottom: 16.6%;
+    }
+}
+@media only screen and (max-width : 480px) 
+{
+.grid-photo li 
+    {
+        width: 33.3%; 
+        padding-bottom: 41.3%;
+    }
+}
+@media only screen and (max-width : 320px) 
+{
+   
+    .grid-photo li 
+    {
+        width: 33.2%; 
+        padding-bottom: 37.3%;
+    }
+}
+.menushka, .menushka a, a {
+        
+background: #transparent;
+color: #035ea8;
+font-family: sans-serif;
+font-weight: bold;
+font-size: 15pt;
+text-decoration: none;
+text-align: center;    
+font-size: 1em;
+    }
+.gallery-list 
+{
+    
+    list-style: none;
+    overflow: hidden;
+}
+
+.fancybox-margin{
+    margin-right:0px;
+}
+
+.vcard{
+    padding-top: 15px;
+}
+input[type=submit]
+{
+    
+}
+input[type=button]
+{
+    
+}
+input[type=text]
+{
+    float: left;
+  width: 100%;
+  font-weight: normal;
+  font-size: 16px;
+  color: inherit;
+  text-align: left;
+  padding: 15px 18px;
+}
+p 
+{
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 0px; /* Отступ сверху */
+    margin-bottom: 0px; /* Отступ снизу */
+}
+
+#ss-submit
+{
+    color:white;
+    background: url(img/buttons/1.png) 100% 100% no-repeat; 
+    background-color: transparent;
+    border: 0px;
+    background-size: cover; 
+    padding: 25px; padding-top: 15px
+    
+}
+#ss-submit:hover
+{
+    background-image:url(/img/buttons/2.png)
+}
+#obrashenie:hover img
+  {
+    content: url(img/menu/1.png);
+  }
+#proverka:hover img
+  {
+    content: url(img/menu/2.png);
+  }
+#novosti:hover img
+  {
+    content: url(img/menu/3.png);
+  }
+#meropriyatiya:hover img
+  {
+    content: url(img/menu/4.png);
+  }
+#mnenie:hover img
+  {
+    content: url(img/menu/5.png);
+  }
+#site:hover img
+  {
+    content: url(img/menu/6.png);
+  }
+#plans:hover img
+  {
+    content: url(img/menu/7.png);
+  }
+#podedi:hover img
+  {
+    content: url(img/menu/8.png);
+  }
+#arhiv:hover img
+  {
+    content: url(img/menu/9.png);
+  }
+#translyacii:hover img
+  {
+    content: url(img/menu/10.png);
+  }
+#documenti:hover img
+  {
+    content: url(img/menu/11.png);
+  }
+#contacti:hover img
+  {
+    content: url(img/menu/12.png);
+  }
+

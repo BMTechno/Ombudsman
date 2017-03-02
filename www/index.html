@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+
+    <title>Grid View Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css" />
+    <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
+        
+    <script src='cordova.js'></script>
+    <script>
+    $(document).ready(function(){
+        //$.afui.splitview.enable();
+    })
+    </script>
+</head>
+<body onload="loadfunk()">
+
+    <div id="splashscreen" class='ui-loader heavy'>
+        App Framework - Grid View
+        <br>
+        <br>
+        <span class='ui-icon ui-icon-loading spin'></span>
+        <h1>Starting app</h1>
+    </div>
+
+    <div class="view">
+        <header style="background-image: url(img/header.png); color:#fff">
+            <h1>Title</h1>
+            <a style='padding:16px; position: absolute; top:5px; right: 5px; background: url(img/buttons/enter.png) 100% 100% no-repeat; background-size: cover; visibility: hidden' id="exit" onclick="exit()"></a>
+        </header>
+
+        <div class="pages" style="background: url(img/back.png) 100% 100% no-repeat; background-size: cover;">
+         <!--Initial Grid of items-->
+        <div class="panel grid" data-title="Меню" id="grid"  data-selected="true">
+            <div class="grid grid-photo">
+                <li class="menushka"><div class="grid-photo-box"><a id="obrashenie" href="#item1" >Обратиться<img id="menu1" src="img/menu/1-1.png" width="189"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="proverka" href="#item2" >Проверки<img id="menu2" src="img/menu/2-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="novosti" href="#item3" >Новости<img id="menu3" src="img/menu/3-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="meropriyatiya" href="#item4" >Мероприятия<img id="menu4" src="img/menu/4-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="mnenie" href="#item5" >Мнения<img id="menu5" src="img/menu/5-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="site" onclick="access('http://ombudsmanbiz29.ru')">Сайт<img id="menu6" src="img/menu/6-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="plans" href="#item7">Планы<img id="menu7" src="img/menu/7-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="podedi" href="#item8">Победы<img id="menu8" src="img/menu/8-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="arhiv" href="#item9">Архив<img id="menu9" src="img/menu/9-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="translyacii" href="#item10">Трансляции<img id="menu10" src="img/menu/10-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="documenti" href="#item11" >Документы<img id="menu11" src="img/menu/11-1.png"/></a></div></li>
+                <li class="menushka"><div class="grid-photo-box"><a id="contacti" href="#item12" >Контакты<img id="menu12" src="img/menu/12-1.png"/></a></div></li>
+            </div>
+        </div>
+
+            <!--Detail View Pages for each grid item-->
+<!--**************************************************************************************************************-->
+<!--*******************************************ОБРАТИТЬСЯ+********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Обратиться" id="item1" style="background: url(img/backg.png) 100% 100% no-repeat; 
+    background-size: cover; padding: 25px; padding-top: 15px" >
+                 
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************ПРОВЕРКИ+**********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Проверки" id="item2">
+               
+        </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************НОВОСТИ+***********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Новости" id="item3">
+                
+  <script type="text/javascript">
+                    var show;
+
+   function hidetxt(type) {
+   	param = document.getElementById(type);
+   	if (param.style.display == "none") {
+   		if (show) show.style.display = "none";
+   		param.style.display = "block";
+   		show = param;
+   	} else param.style.display = "none"
+   }
+
+   var url = "http://ombudsmanbiz29.ru//wp-content/uploads/wpallexport/exports/ad907c415f7df57f4f4ec0012dd52995/Zapisi.xml";
+   var xml;
+   var xml2;
+   if (window.XMLHttpRequest) {
+   	xml = new window.XMLHttpRequest();
+   	xml.open("GET", url, false);
+   	xml.send("");
+   	xml2 = xml.responseXML;
+   } else
+   if (window.ActiveXObject) {
+   	xml = new ActiveXObject("Microsoft.XMLDOM");
+   	xml.async = false;
+   	xml.load(url);
+   	xml2 = xml;
+   } else {
+   	alert("Загрузка XML не поддерживается браузером");
+   	xml2 = null;
+   }
+
+   var towns = xml2.getElementsByTagName("post");
+   if (towns)
+       for (var i1 = 0; i1 < towns.length; i1++) {  
+        var categ = towns[i1].getElementsByTagName("category")[0].childNodes[0].nodeValue;
+        if( categ != "Без рубрики|Победы") continue;
+   		var num = i1.toString();
+   		var title = towns[i1].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+   		var data = towns[i1].getElementsByTagName("content")[0].childNodes[0].nodeValue;
+        var reg = /\[[^\]]*\]/ig
+        data = data.replace(reg, "");
+        reg = /href="[^"]*"/ig
+        data = data.replace(reg, "");
+        document.writeln("<p>")
+   		document.writeln("<div><a style='text-align: justify' onclick=\"hidetxt(\'div" + num + "\'); return false;\" href=\"#\" rel=\"nofollow\">");
+   		document.writeln(title)
+   		document.writeln("</a><div style=\"display:none;\" id=\"div" + num + "\">")
+   		document.writeln(data)
+   		document.writeln("</div></div>")
+   		document.writeln("</p>")
+   	    }
+                </script>  
+            </div>
+<!--**************************************************************************************************************-->
+<!--****************************************МЕРОПРИЯТИЯ***********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Мероприятия" id="item4">
+                
+                <center>
+                 <p>В ближайшее время здесь будет размещена информация о прошедших мероприятиях.</p>
+                 <p style="color:#035ea8;">Не пропустите!</p>
+                </center>
+               
+            </div>
+<!--**************************************************************************************************************-->
+<!--****************************************МНЕНИЯ****************************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Мнения" id="item5">
+               
+            </div>
+<!--**************************************************************************************************************-->
+<!--***********************************************САЙТ+**********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Сайт" id="item6">
+               
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************ПЛАНЫ**************************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Планы" id="item7">
+                <center style="font-size: 16pt">
+               <p>В ближайшее время в этом разделе появится информация о планируемых мероприятиях.</p>
+               <p style="color:#035ea8;">Не пропустите!</p>
+                </center>
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************ПОБЕДЫ+************************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Победы" id="item8">
+                <script type="text/javascript">
+                    var show;
+
+   function hidetxt(type) {
+   	param = document.getElementById(type);
+   	if (param.style.display == "none") {
+   		if (show) show.style.display = "none";
+   		param.style.display = "block";
+   		show = param;
+   	} else param.style.display = "none"
+   }
+
+   var url = "http://ombudsmanbiz29.ru//wp-content/uploads/wpallexport/exports/ad907c415f7df57f4f4ec0012dd52995/Zapisi.xml";
+   var xml;
+   var xml2;
+   if (window.XMLHttpRequest) {
+   	xml = new window.XMLHttpRequest();
+   	xml.open("GET", url, false);
+   	xml.send("");
+   	xml2 = xml.responseXML;
+   } else
+   if (window.ActiveXObject) {
+   	xml = new ActiveXObject("Microsoft.XMLDOM");
+   	xml.async = false;
+   	xml.load(url);
+   	xml2 = xml;
+   } else {
+   	alert("Загрузка XML не поддерживается браузером");
+   	xml2 = null;
+   }
+
+   var towns = xml2.getElementsByTagName("post");
+   if (towns)
+       for (var i1 = 0; i1 < towns.length; i1++) {  
+        var categ = towns[i1].getElementsByTagName("category")[0].childNodes[0].nodeValue;
+        if( categ != "Без рубрики|Победы") continue;
+   		var num = i1.toString();
+   		var title = towns[i1].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+   		var data = towns[i1].getElementsByTagName("content")[0].childNodes[0].nodeValue;
+        var reg = /\[[^\]]*\]/ig
+        data = data.replace(reg, "");
+        reg = /href="[^"]*"/ig
+        data = data.replace(reg, "");
+        document.writeln("<p>")
+   		document.writeln("<div><a onclick=\"hidetxt(\'div" + num + "\'); return false;\" href=\"#\" rel=\"nofollow\">");
+   		document.writeln(title)
+   		document.writeln("</a><div style=\"display:none;\" id=\"div" + num + "\">")
+   		document.writeln(data)
+   		document.writeln("</div></div>")
+   		document.writeln("</p>")
+   	    }
+                </script>
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************АРХИВ+*************************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Архив" id="item9" style="background: url(img/backg.png) 100% 100% no-repeat; 
+    background-size: cover; padding: 25px; padding-top: 15px" >
+                <ul class="gallery-list" >
+    <script type="text/javascript">
+     
+   var show;
+
+   function hidetxt(type) {
+   	param = document.getElementById(type);
+   	if (param.style.display == "none") {
+   		if (show) show.style.display = "none";
+   		param.style.display = "block";
+   		show = param;
+   	} else param.style.display = "none"
+   }
+
+   var url = "http://ombudsmanbiz29.ru/wp-content/uploads/wpallexport/exports/d42b2f1f094125d1ca0f28624bc7598e/video.xml";
+   var xml;
+   var xml2;
+   if (window.XMLHttpRequest) {
+   	xml = new window.XMLHttpRequest();
+   	xml.open("GET", url, false);
+   	xml.send("");
+   	xml2 = xml.responseXML;
+   } else
+   if (window.ActiveXObject) {
+   	xml = new ActiveXObject("Microsoft.XMLDOM");
+   	xml.async = false;
+   	xml.load(url);
+   	xml2 = xml;
+   } else {
+   	alert("Загрузка XML не поддерживается браузером");
+   	xml2 = null;
+   }
+
+   var towns = xml2.getElementsByTagName("post");
+                    
+   if (towns){
+    for (var i1 = 0; i1 < towns.length; i1++) {  
+       var date = towns[i1].getElementsByTagName("date")[0].childNodes[0].nodeValue;
+       var date_str= date[6]+date[7]+"."+date[4]+date[5]+"."+date[0]+date[1]+date[2]+date[3];       
+       var data = towns[i1].getElementsByTagName("content")[0].childNodes[0].nodeValue;
+        var reg = /https:\/\/youtu.be\//ig
+        data = data.replace(reg, "");
+       document.writeln("<li>")
+       document.writeln("<p>"+date_str+"<iframe width=\""+(window.innerWidth-40)+"\" height=\""+((window.innerHeight-140)/2)+"\" src=\"https://www.youtube.com/embed/"+data+"?feature=oembed\"frameborder=\"0\" allowfullscreen=\"true\"></iframe></p>")
+       if (i1!=towns.length-1) document.writeln("<img src=\"img/separator.png\">");
+       document.writeln("</li>")
+      
+       
+    }
+        }
+           
+                </script>
+                </ul>
+                
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************ТРАНСЛЯЦИИ*********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Трансляции" id="item10"></div>
+<!--**************************************************************************************************************-->
+<!--*******************************************ДОКУМЕНТЫ+*********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Документы" id="item11">
+<style>
+  
+  </style>
+                <script type="text/javascript">
+                    var show;
+
+   function hidetxt(type) {
+   	param = document.getElementById(type);
+   	if (param.style.display == "none") {
+   		if (show) show.style.display = "none";
+   		param.style.display = "block";
+   		show = param;
+   	} else param.style.display = "none"
+   }
+
+   var url = "http://ombudsmanbiz29.ru/wp-content/uploads/wpallexport/exports/58c4c884e0b025d371f12cd2b26bed48/dokumenty.xml";
+   var xml;
+   var xml2;
+   if (window.XMLHttpRequest) {
+   	xml = new window.XMLHttpRequest();
+   	xml.open("GET", url, false);
+   	xml.send("");
+   	xml2 = xml.responseXML;
+   } else
+   if (window.ActiveXObject) {
+   	xml = new ActiveXObject("Microsoft.XMLDOM");
+   	xml.async = false;
+   	xml.load(url);
+   	xml2 = xml;
+   } else {
+   	alert("Загрузка XML не поддерживается браузером");
+   	xml2 = null;
+   }
+
+   var towns2 = xml2.getElementsByTagName("post");
+   if (towns2)
+       for (var i1 = 0; i1 < towns2.length; ++i1) {
+
+   		var num = i1.toString();
+   		var title = towns2[i1].getElementsByTagName("title")[0].childNodes[0].nodeValue+".";
+   		var data = towns2[i1].getElementsByTagName("content")[0].childNodes[0];
+        if(data != null) data = data.nodeValue; else data = " - "; // нет информации
+        var href = towns2[i1].getElementsByTagName("url")[0].childNodes[0].nodeValue;
+
+        document.writeln("<p>")
+   		document.writeln("<div><a onclick=\"hidetxt(\'div" + num + "\'); return false;\" href=\"#\" rel=\"nofollow\">");
+   		document.writeln(title)
+   		document.writeln("</a><div style=\"display:none;\" id=\"div" + num + "\">")
+   		document.writeln(data)
+        document.writeln("<p><a href=\""+href +"\">СКАЧАТЬ ДОКУМЕНТ</a></p>")
+   		document.writeln("</div></div>")
+
+   		document.writeln("</p>")
+        
+   	    }
+                </script>
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************КОНТАКТЫ+**********************************************************-->
+<!--**************************************************************************************************************-->
+            <div class="panel" data-title="Контакты" id="item12">
+            <h2 style="text-align: justify">Вы можете позвонить, а также написать на электронную почту:</h2>
+              <p>Телефон: <a href="tel:+78182650975"> (8182) 65-09-75</a> <br>
+              E-mail: <a href="mailto:info@ombudsmanbiz29.ru">info@ombudsmanbiz29.ru</a></p>
+            <h2>или прийти по адресу</h2>
+                <p> г. Архангельск, ул. Выучейского, д. 18, каб.&nbsp;203 </p>
+                <p>Прием субъектов предпринимательской деятельности: <br>
+                    <b> - уполномоченным </b> — Вторник (еженедельно) с 15-00 до 18-00 (по записи по телефону)<br>
+                    <b> - сотрудниками секретариата </b> — Четверг (еженедельно) с 15-00 до 17-00
+                </p>
+                
+                
+                
+                
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1715.620574294919!2d40.538746551927886!3d64.53246059039066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4418342bf3097d2b%3A0xbc41db1910a3227f!2z0YPQuy4g0JLRi9GD0YfQtdC50YHQutC-0LPQviwgMTgsINCQ0YDRhdCw0L3Qs9C10LvRjNGB0LosINCQ0YDRhdCw0L3Qs9C10LvRjNGB0LrQsNGPINC-0LHQuy4sIDE2MzA0Ng!5e0!3m2!1sru!2sru!4v1466024274411" width="95%" height="250" frameborder="0" style="border:0; position: absolute; bottom:20px; left: 10px" allowfullscreen ></iframe>
+            </div>
+<!--**************************************************************************************************************-->
+<!--*******************************************СЛУЖЕБНЫЕ**********************************************************-->
+<!--**************************************************************************************************************-->
+            
+<!--*******************************************РЕГИСТРАЦИЯ********************************************************-->
+            
+            <div class="panel" data-title="Регистрация" id="item14">
+                
+                <label style="margin-top: 15px;" for="f">Фамилия*</label> 
+                <input style="margin-top: 15px;" type="text" required id="f">
+                <label for="i">Имя*</label> 
+                <input type="text" required id="i">
+                <label for="o">Отчество</label> 
+                <input type="text" id="o">
+                <label for="mail">Электроная почта*</label>
+                <input type="email" id="mail" required>
+                <label for="pass">Пароль*</label> 
+                <input type="password" id="pass" required>
+                <input type="checkbox" id="accept" required>
+                <label for="accept"> Подтверждаю согласие на <a style="" href="access(http://pravo.gov.ru/proxy/ips/?docbody=&nd=102108261)">обработку персональных данных</a></label>
+                <input type="checkbox" id="remember" checked>
+                <label for="remember"> Запомнить пароль на устройстве</label>
+               <center><input type="submit" style="margin-top: 20px; float: none" value="Зарегистрироваться" onclick="registration()"/></center>
+                
+            </div>
+            
+<!--*******************************************ВХОД***************************************************************-->
+            
+            <div class="panel" data-title="Вход" id="item15">
+                
+                <label style="padding: 4px 18px; margin-top:15px;" for="mail">Электроная почта</label>
+                <input type="email" id="mail" style="margin-top:15px;">
+                <label  style="padding-top: 22px; padding-bottom: 12px; margin-bottom: 20px;" for="pass">Пароль</label> 
+                <input type="password" id="pass" style="margin-bottom: 20px;">
+                <center>
+                <a class="but" onclick="enter()"> Вход </a>
+                </center>
+            </div>
+            
+<!--*******************************************УСПЕХ*************************************************************-->
+            
+            <div class="panel" data-title="Успех!" id="SUCCESS">
+                <center>Инфрмация успешно загружена!</center>
+            </div>
+
+<!--*******************************************ОГРАНИЧЕНИЕ*******************************************************-->
+        
+            <div class="panel" data-title="Ограничение" id="RegWarning">
+                
+                    <p style="color: #035ea8; padding-top: 15px;">Для доступа к специальным функциям приложения необходимо зарегистрироваться. </p>
+                    <p>Зарегистрированные пользователи получают возможность направить обращение, подать заявку для участия бизнес-уполномоченного в проверке и выразить свое мнение о работе омбудсмена и другое.</p>
+                    <br><br>
+                    <center><a class="but" href="#item14">Регистрация</a>  </center>
+                               
+            </div>
+            
+            <div class="panel" data-title="Ограничение" id="EnterWarning">
+                
+                 <p style="color: #035ea8; padding-top: 15px;">Для доступа к специальным функциям приложения необходимо войти или зарегистрироваться. </p>
+                    <p>Зарегистрированные пользователи получают возможность направить обращение, подать заявку для участия бизнес-уполномоченного в проверке и выразить свое мнение о работе омбудсмена и другое.</p>
+                    <br><br>
+                    <center><a class="but" href="#item15">Вход</a> <a class="but" href="#item14">Регистрация</a></center>
+                    
+            </div>            
+            
+<!--*******************************************ОБРАТИТЬСЯ*******************************************************-->
+            
+            <div class="panel" data-title="Обратиться" id="APPEAL">
+            <iframe name="hidden_iframe1" id="hidden_iframe1" style="display:none;" onload=""></iframe>
+            <div class="ss-form">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLScyNsB2f9LwZciDKPxooPwOPcC5bqlFjtdCNOpFW027nqlw2A/formResponse" method="POST" id="ss-form" target="hidden_iframe1" onsubmit="ok(this)">
+               <ol role="list" class="ss-question-list" style="padding-left: 0;">
+
+<div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_656821722"><div class="ss-q-title">Фамилия*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.656821722" value="" class="ss-q-short" id="entry_656821722" dir="auto" aria-label="Фамилия  " aria-required="true" required="" title="">
+<div class="error-message" id="806088747_errorMessage"></div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_358603644"><div class="ss-q-title">Имя
+
+*:</div><div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.358603644" value="" class="ss-q-short" id="entry_358603644" dir="auto" aria-label="Имя  " aria-required="true" required="" title="">
+<div class="error-message" id="1747674127_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1627928414"><div class="ss-q-title">Отчество:
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1627928414" value="" class="ss-q-short" id="entry_1627928414" dir="auto" aria-label="Отчество  " title="">
+<div class="error-message" id="2098882730_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1189917800"><div class="ss-q-title">Название юридического лица:
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1189917800" value="" class="ss-q-short" id="entry_1189917800" dir="auto" aria-label="Название юридического лица  " title="">
+<div class="error-message" id="193145689_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_211749802"><div class="ss-q-title">Город
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.211749802" value="" class="ss-q-short" id="entry_211749802" dir="auto" aria-label="Город  " aria-required="true" required="" title="">
+<div class="error-message" id="146245260_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_2057946484"><div class="ss-q-title">Адрес
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.2057946484" value="" class="ss-q-short" id="entry_2057946484" dir="auto" aria-label="Адрес  " aria-required="true" required="" title="">
+<div class="error-message" id="408400527_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_10769485"><div class="ss-q-title">Телефон
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.10769485" value="" class="ss-q-short" id="entry_10769485" dir="auto" aria-label="Контактный телефон  " aria-required="true" required="" title="">
+<div class="error-message" id="1903108711_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1167786278"><div class="ss-q-title">Тема
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1167786278" value="" class="ss-q-short" id="entry_1167786278" dir="auto" aria-label="Тема обращения  " aria-required="true" required="" title="">
+<div class="error-message" id="1488385493_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-paragraph-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1841912541"><div class="ss-q-title">Текст обращения
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<textarea style="resize: none"  name="entry.1841912541" rows="4" cols="0" class="ss-q-long" id="entry_1841912541"  dir="auto" aria-label="Текст обращения  " aria-required="true" required=""></textarea>
+<div class="error-message" id="1467764497_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_316011517"><div class="ss-q-title">Элекстронная почта:
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.316011517" value="" class="ss-q-short" id="entry_316011517" dir="auto" aria-label="Электронная почта  " title="">
+<div class="error-message" id="1683288682_errorMessage"></div>
+
+</div></div></div>
+<input type="hidden" name="draftResponse" value="[,,&quot;800642051651314258&quot;]
+">
+<input type="hidden" name="pageHistory" value="0">
+
+
+
+<input type="hidden" name="fbzx" value="800642051651314258">
+<div class="ss-send-email-receipt" style="margin-bottom: 4px;" dir="ltr"><label for="emailReceipt" style="display:inline;"></label></div>
+<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+<input type="submit" name="submit" value="&#1054;&#1090;&#1087;&#1088;&#1072;&#1074;&#1080;&#1090;&#1100;" id="ss-submit" class="jfk-button jfk-button-action ">
+</td>
+</tr></tbody></table></div></ol></form></div>
+            </div>
+            
+<!--*******************************************ПРОВЕРКИ*********************************************************-->
+           
+            <div class="panel" data-title="Проверки" id="INSPECTION">           
+               <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"> 
+                </iframe>
+                <div class="ss-form">
+                   <form action="https://docs.google.com/forms/d/e/1FAIpQLSf_21wdwoKMLHFVRL0522SMly7b4aS52Kv1y9xE6wZEu9d80Q/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="ok(this)">
+                       <ol role="list" class="ss-question-list" style="padding-left: 0;">
+
+                           <div class="ss-form-question errorbox-good" role="listitem">
+                               <div dir="auto" class="ss-item ss-item-required ss-text">
+                                   <div class="ss-form-entry">
+                                       <label class="ss-q-item-label" for="entry_265037146">
+                                           <div class="ss-q-title">Фамилия
+                                               
+                                               *:
+                                           </div>
+                                           <div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+                                       <input type="text" name="entry.265037146" value="" class="ss-q-short" id="entry_265037146" dir="auto" aria-label="Фамилия  " aria-required="true" required="" title="">
+                                       <div class="error-message" id="1456804054_errorMessage"></div>
+
+                                   </div>
+                               </div>
+                           </div> 
+                           <div class="ss-form-question errorbox-good" role="listitem">
+                               <div dir="auto" class="ss-item ss-item-required ss-text">
+                                   <div class="ss-form-entry">
+                                       <label class="ss-q-item-label" for="entry_1650098666">
+                                           <div class="ss-q-title">Имя
+                                               
+                                               *:</div>
+                                           <div class="ss-q-help ss-secondary-text" dir="auto"></div>
+                                       </label>
+
+                                       <input type="text" name="entry.1650098666" value="" class="ss-q-short" id="entry_1650098666" dir="auto" aria-label="Имя  " aria-required="true" required="" title="">
+<div class="error-message" id="615454863_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1294394935"><div class="ss-q-title">Отчество
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1294394935" value="" class="ss-q-short" id="entry_1294394935" dir="auto" aria-label="Отчество  " title="">
+<div class="error-message" id="1483115521_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1436500843"><div class="ss-q-title">Название юридического лица
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1436500843" value="" class="ss-q-short" id="entry_1436500843" dir="auto" aria-label="Название юридического лица  " title="">
+<div class="error-message" id="370706753_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_2058016177"><div class="ss-q-title">Город
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.2058016177" value="" class="ss-q-short" id="entry_2058016177" dir="auto" aria-label="Город  " aria-required="true" required="" title="">
+<div class="error-message" id="72988781_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_987293367"><div class="ss-q-title">Адрес
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.987293367" value="" class="ss-q-short" id="entry_987293367" dir="auto" aria-label="Адрес  " aria-required="true" required="" title="">
+<div class="error-message" id="20826327_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1837474420"><div class="ss-q-title">Контактный телефон
+
+*:</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1837474420" value="" class="ss-q-short" id="entry_1837474420" dir="auto" aria-label="Контактный телефон  " aria-required="true" required="" title="">
+<div class="error-message" id="1435751892_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-date"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_305414116"><div class="ss-q-title">Дата проверки
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="date" name="entry.305414116" value="" class="ss-q-date" dir="auto" id="entry_305414116" aria-label="Дата проверки  ">
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_905674951"><div class="ss-q-title">Электронная почта
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.905674951" value="" class="ss-q-short" id="entry_905674951" dir="auto" aria-label="Электронная почта  " title="">
+<div class="error-message" id="2123438753_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_725075817"><div class="ss-q-title">Комментарии
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<textarea style="resize: none" name="entry.725075817" rows="4" cols="0" class="ss-q-long" id="entry_725075817" dir="auto" aria-label="Комментарии  "></textarea>
+<div class="error-message" id="1621938692_errorMessage"></div>
+
+</div></div></div>
+<input type="hidden" name="draftResponse" value="[,,&quot;-5338144841357597196&quot;]
+">
+<input type="hidden" name="pageHistory" value="0">
+
+
+
+<input type="hidden" name="fbzx" value="-5338144841357597196">
+<div class="ss-send-email-receipt" style="margin-bottom: 4px;" dir="ltr"><label for="emailReceipt" style="display:inline;"></label></div>
+<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+<input type="submit" name="submit" value="Отправить" id="ss-submit" class="jfk-button jfk-button-action ">
+
+    </td>
+</tr></tbody></table></div></ol></form></div>
+            
+            </div>
+            
+<!--*******************************************МНЕНИЯ***********************************************************-->
+           
+            <div class="panel" data-title="Мнения" id="OPINION">
+                <iframe name="hidden_iframe2" id="hidden_iframe2" style="display:none;"> 
+                </iframe>
+            <h2 style="padding-bottom: 15px; padding-top:10px">В этом разделе Вы можете выразить свое мнение по любому вопросу.</h2>
+                
+                <div class="ss-form"><form action="https://docs.google.com/forms/d/e/1FAIpQLSdHevdEUqnnwxNBeN2IrtaTDdIGy8ssGP6kplobLnQI3j_JVQ/formResponse" method="POST" id="ss-form" target="hidden_iframe2" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0;">
+
+<div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1837474420"><div class="ss-q-title">Тема
+
+*</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<input type="text" name="entry.1837474420" value="" class="ss-q-short" id="entry_1837474420" dir="auto" aria-label="Тема  " aria-required="true" required="" title="">
+<div class="error-message" id="1435751892_errorMessage"></div>
+
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item ss-item-required ss-paragraph-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_725075817"><div class="ss-q-title">Текст
+
+*</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+
+<textarea style="resize: none" name="entry.725075817" rows="4" cols="0" class="ss-q-long" id="entry_725075817" dir="auto" aria-label="Текст  " aria-required="true" required=""></textarea>
+<div class="error-message" id="1621938692_errorMessage"></div>
+
+</div></div></div>
+<input type="hidden" name="draftResponse" value="[,,&quot;2623290795029537540&quot;]
+">
+<input type="hidden" name="pageHistory" value="0">
+
+
+
+<input type="hidden" name="fbzx" value="2623290795029537540">
+<div class="ss-send-email-receipt" style="margin-bottom: 4px;" dir="ltr"><label for="emailReceipt" style="display:inline;"></label></div>
+<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+<input type="submit" name="submit" value="Отправить" id="ss-submit" class="jfk-button jfk-button-action ">
+</td>
+</tr></tbody></table></div></ol></form></div>
+            </div>
+       
+<!--*******************************************КОНЕЦ***********************************************************-->    
+        </div>    
+    </div> 
+    <script>
+         function fill(usernum)
+        {
+            var userf = window.localStorage.getItem('user.'+usernum+'.f');
+            var useri = window.localStorage.getItem('user.'+usernum+'.i');
+            var usero = window.localStorage.getItem('user.'+usernum+'.o');
+            var usermail =  window.localStorage.getItem('user.'+usernum+'.login');
+            
+            document.getElementById('entry_656821722').value=userf; // заполняем фамилию во вкладке обратиться
+            document.getElementById('entry_358603644').value=useri; // заполняем имя во вкладке обратиться
+            document.getElementById('entry_1627928414').value=usero; // заполняем отество во вкладке обратиться
+            document.getElementById('entry_316011517').value=usermail;// заполняем почту во вкладке обратиться
+            
+            document.getElementById('entry_265037146').value=userf; // заполняем фамилию во вкладке проверки
+            document.getElementById('entry_1650098666').value=useri; // заполняем имя во вкладке проверки
+            document.getElementById('entry_1294394935').value=usero; // заполняем отество во вкладке проверки
+            document.getElementById('entry_905674951').value=usermail;// заполняем почту во вкладке проверки
+        }
+        function loadfunk()
+        {
+            sizing();
+            if (window.localStorage.length==0)  /// первый вход или пользователь никогда не регистрировался
+            {
+                var a = document.getElementById('RegWarning').innerHTML; /// на месте особых вкладок показываем просьбу зарегистрироваться
+                document.getElementById('item1').innerHTML = a; /// обратиться
+                document.getElementById('item2').innerHTML = a; /// проверки
+                document.getElementById('item5').innerHTML = a; /// мнения   
+        
+            }
+        else if (window.localStorage.getItem('remember')=='false') /// пользователь регистрировался, но не запомнил свою запись
+            {
+                var a = document.getElementById('EnterWarning').innerHTML; /// на месте особых вкладок показываем просьбу зарегистрироваться или войти  
+                document.getElementById('item1').innerHTML = a; /// обратиться
+                document.getElementById('item2').innerHTML = a; /// проверки
+                document.getElementById('item5').innerHTML = a; /// мнения  
+                document.getElementById('exit').style.visibility="hidden";
+            }
+        else /// пользователь регистрировался, вошел и запомнил свой пароль
+            {
+                document.getElementById('item1').innerHTML = document.getElementById('APPEAL').innerHTML; /// обратиться
+                document.getElementById('item2').innerHTML = document.getElementById('INSPECTION').innerHTML; /// проверки
+                document.getElementById('item5').innerHTML = document.getElementById('OPINION').innerHTML; /// мнения  
+                var usernum = window.localStorage.getItem('active.user');
+                fill(usernum); /// заполнение полей пользовательской информацией
+                document.getElementById('exit').style.visibility="visible";
+            }
+        }
+        function access (url)
+        {
+            //intel.xdk.device.launchExternal(url);
+           window.open(url, 'random_string', 'location=no');
+        }
+        function registration()
+        { 
+            if ((document.getElementById('f').value)&&(document.getElementById('i').value)&&(document.getElementById('o').value)&&(document.getElementById('mail').value)&&(document.getElementById('pass').value)&&(document.getElementById('accept').checked))
+                {
+                    var usernum;
+                    if (!window.localStorage.getItem('num.of.users')) usernum="1";
+                    else
+                    {
+                        switch (window.localStorage.getItem('num.of.users'))
+                        {
+                            case "1":
+                                {usernum="2"; break;}
+                            case "2":
+                                {usernum="3"; break;}
+                            case "3":
+                                {usernum="4"; break;}
+                            case "4":
+                                {usernum="5"; break;}
+                        }
+                    }
+                   var localst = window.localStorage;
+                    localst.setItem('num.of.users',usernum);
+                    
+                    localst.setItem('user.'+usernum+'.pass', document.getElementById('pass').value);
+                    localst.setItem('user.'+usernum+'.login',document.getElementById('mail').value);
+                    localst.setItem('user.'+usernum+'.f',document.getElementById('f').value);
+                    localst.setItem('user.'+usernum+'.i',document.getElementById('i').value);
+                    localst.setItem('user.'+usernum+'.o',document.getElementById('o').value);
+                    if (document.getElementById('remember').checked)
+                        {
+                            window.localStorage.setItem('active.user', usernum);
+                            window.localStorage.setItem('remember', "true");
+                            window.location.href="#grid";
+                            loadfunk();
+                        }
+                    else 
+                        {
+                            window.localStorage.setItem('remember', "false");
+                            window.location.href="#grid";
+                            loadfunk();
+                        }
+                }
+            else alert("Проверьте, все ли обязательные поля заполнены.");
+        }
+        function ok(f)
+        {
+            alert("Информация успешно загружена!");
+            f.reset();   
+            fill(window.localStorage.getItem('active.user'));
+        }
+        function enter()
+        {
+            var n = Number(window.localStorage.getItem("num.of.users"));
+            var login = document.getElementById('mail').value;
+            var password = document.getElementById('pass').value;
+            var done = 0;
+            for (var i = 1; i<=n; i++)                    
+                    if (String((window.localStorage.getItem("user."+i+".pass"))==password)&&String((window.localStorage.getItem("user."+i+".login"))==login))
+                            done = 1;
+            if (done)
+            {
+                window.localStorage.setItem("active.user",String(i));
+                window.localStorage.setItem("remember","true");
+                loadfunk();
+                window.location.href="#";                
+            }
+            else
+                alert("Пара логин-пароль не верны.");
+        }
+        function exit()
+        {
+            window.localStorage.setItem("active.user","");
+            window.localStorage.setItem("remember","false");
+            loadfunk();
+        }
+        function sizing()
+        {
+            myHeight = ((window.innerHeight - 54)/4);
+            myWidth = ((window.innerWidth-20)/3);
+            for (var i=1; i<=12; i++)
+                {
+                    document.getElementById("menu"+i).width=myWidth;
+                    document.getElementById("menu"+i).height=myWidth;
+                }
+        }
+       
+    </script>
+</body>
+</html>
